@@ -7,20 +7,12 @@ const args = minimist(process.argv.slice(2));
 if (args.h || args.help) { help(); }
 if (args.r || args.rules) { rules(); }
 
-gameResult = '';
+let gameResult = '';
 if (args._[0]){
     gameResult = rpsls(args._[0]);
 } else {
     gameResult = rpsls();
 }
-
-if (gameResult === undefined){
-    console.log(`Error: ${args._[0]} is not in the acceptable range.`);
-    rules();
-} else {
-    console.log(JSON.stringify(gameResult));
-}
-
 
 function help() {
     console.log(
