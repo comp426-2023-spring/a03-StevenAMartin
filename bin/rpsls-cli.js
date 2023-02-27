@@ -7,6 +7,7 @@ const args = minimist(process.argv.slice(2));
 if (args.h || args.help) { help(); }
 if (args.r || args.rules) { rules(); }
 
+if (args._[0]){
 try {
     console.log(JSON.stringify(rpsls(args._[0])));
 } catch (error) {
@@ -15,6 +16,10 @@ try {
         rules();
     }
 }
+} else {
+    console.log(JSON.stringify(rps()));
+}
+
 
 function help() {
     console.log(
