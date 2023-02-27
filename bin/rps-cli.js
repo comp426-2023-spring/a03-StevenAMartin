@@ -13,7 +13,7 @@ try {
     console.log(JSON.stringify(rps(args._[0])));
 } catch (error) {
     if (error instanceof RangeError) {
-        console.log('Error: ' + args._[0] + " is not in the acceptable range.");
+        console.log(`Error: ${args._[0]} is not in the acceptable range.`);
         rules();
         process.exit(0); 
     }
