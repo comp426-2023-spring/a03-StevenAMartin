@@ -17,7 +17,7 @@ try {
     }
 }
 } else {
-    console.log(JSON.stringify(rps()));
+    console.log(JSON.stringify(rpsls()));
 }
 
 
