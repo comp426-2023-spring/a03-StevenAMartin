@@ -8,6 +8,7 @@ if (args.h || args.help) { help(); }
 
 if (args.r || args.rules) { rules(); }
 
+if (args._[0]){
 try {
     console.log(JSON.stringify(rps(args._[0])));
 } catch (error) {
@@ -16,6 +17,9 @@ try {
         rules();
         process.exit(0); 
     }
+}
+} else {
+    console.log(JSON.stringify(rps()));
 }
 
   
