@@ -7,17 +7,18 @@ const args = minimist(process.argv.slice(2));
 if (args.h || args.help) { help(); }
 if (args.r || args.rules) { rules(); }
 
+gameResult = '';
 if (args._[0]){
-try {
-    console.log(JSON.stringify(rpsls(args._[0])));
-} catch (error) {
-    if (error instanceof RangeError) {
-        console.log(`Error: ${args._[0]} is not in the acceptable range.`);
-        rules();
-    }
-}
+    gameResult = rpsls(args._[0]);
 } else {
-    console.log(JSON.stringify(rpsls()));
+    gameResult = rpsls();
+}
+
+if (gameResult === undefined){
+    console.log(`Error: ${args._[0]} is not in the acceptable range.`);
+    rules();
+} else {
+    console.log(JSON.stringify(gameResult));
 }
 
 
