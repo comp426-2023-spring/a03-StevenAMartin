@@ -3,23 +3,15 @@ import minimist from 'minimist';
 import { rpsls } from "../lib/rpsls.js"
 const args = minimist(process.argv.slice(2));
 
-if (args.h || args.help) {
-    help();
-    process.exit(0);
-}
+if (args.h || args.help) { help(); }
+if (args.r || args.rules) { rules(); }
 
-if (args.r || args.rules) {
-    rules();
-}
-
-let game = undefined;
 try {
     console.log(JSON.stringify(rpsls(args._[0])));
 } catch (error) {
     if (error instanceof RangeError) {
         console.log('Error: ' + args._[0] + " is not in the acceptable range.");
         rules();
-        process.exit(0); 
     }
 }
 
