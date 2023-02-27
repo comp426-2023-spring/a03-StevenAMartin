@@ -7,19 +7,14 @@ const args = minimist(process.argv.slice(2));
 if (args.h || args.help) { help(); }
 if (args.r || args.rules) { rules(); }
 
-let gameResult = '';
-if (args._[0]){
-    gameResult = rpsls(args._[0]);
-} else {
-    gameResult = rpsls();
+try {
+    console.log(JSON.stringify(rpsls(args._[0])));
+} catch (error) {
+    if (error instanceof RangeError) {
+        console.log(`Error: ${args._[0]} is not in the acceptable range.`);
+        rules();
+    }
 }
-if (gameResult === undefined){
-    console.log(`Error: ${args._[0]} is not in the acceptable range.`);
-    rules();
-} else {
-    console.log(JSON.stringify(gameResult));
-}
-
 
 function help() {
     console.log(
@@ -51,5 +46,5 @@ function rules() {
     - Rock CRUSHES Scissors`;
 
     console.log(r);
-    process.exit(0);    
+    process.exit(0);
 }
