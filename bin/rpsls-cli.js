@@ -13,6 +13,13 @@ if (args._[0]){
 } else {
     gameResult = rpsls();
 }
+if (gameResult === undefined){
+    console.log(`Error: ${args._[0]} is not in the acceptable range.`);
+    rules();
+} else {
+    console.log(JSON.stringify(gameResult));
+}
+
 
 function help() {
     console.log(
